@@ -207,7 +207,9 @@ exports.registerFlipbook = async (req, res) => {
 
     // Find or create user
     let user = await User.findOne({ email });
-    
+    if(user) { 
+  return res.status(400).json({ message: "This email is already registered" })
+}
     if (!user) {
       const hashedPassword = await bcrypt.hash('defaultPassword123', 10);
       user = await User.create({

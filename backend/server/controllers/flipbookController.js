@@ -190,6 +190,14 @@ exports.registerFlipbook = async (req, res) => {
 
     const { firstname, lastname, email } = req.body;
 
+     let user = await User.findOne({ email });
+
+    if(user){
+      console.log("user already there")
+      return res.status(500).json("use another email already regestred")
+    }
+   
+
     // Validation
     if (!firstname || !lastname || !email) {
       return res.status(400).json({ message: "All fields are required" });
@@ -206,17 +214,15 @@ exports.registerFlipbook = async (req, res) => {
     }
 
     // Find or create user
-    let user = await User.findOne({ email });
-    if(user) { 
-  return res.status(400).json({ message: "This email is already registered" })
-}
+   
+    
     if (!user) {
-      const hashedPassword = await bcrypt.hash('defaultPassword123', 10);
+     
       user = await User.create({
         firstname,
         lastname,
         email,
-        password: hashedPassword
+       
       });
       console.log("New user created:", user._id);
     } else {

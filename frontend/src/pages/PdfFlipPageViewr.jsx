@@ -43,7 +43,7 @@ export default function FlipbookViewer() {
     flip1: new Audio(pageFlipSound1),
   });
 
-  const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+   const API_BASE = import.meta.env.VITE_API_URL;
 
   // Optimized book dimensions for better fit
   const bookWidth = 320;

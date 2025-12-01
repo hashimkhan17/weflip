@@ -10,7 +10,7 @@ exports.uploadImage = async (req, res) => {
       return res.status(400).json({ message: "Image file is required" });
     }
 
-    const baseUrl = process.env.BASE_URL || 'http://localhost:5000';
+    const baseUrl = process.env.BASE_URL;
     const imageUrl = `${baseUrl}/api/imageslider/uploads/${req.file.filename}`;
 
     const image = await ImageSlider.create({

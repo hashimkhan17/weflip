@@ -235,7 +235,8 @@ exports.registerFlipbook = async (req, res) => {
     console.log(`PDF processed: ${pdfData.totalPages} pages`);
     
     // Create flipbook URL
-    const baseUrl = process.env.FRONT_URI || 'http://localhost:5173';
+    const baseUrl = process.env.FRONT_URI;
+   
     const flipbookUrl = `${baseUrl}/flipbook/view`;
 
     // Set expiry (7 days for trial users)

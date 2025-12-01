@@ -7,14 +7,15 @@ dotenv.config();
 
 const connectDB = require("./config/db");
 const flipbookRoutes = require("./routes/flipbookroutes");
-const imageSliderRoutes = require("./routes/imageSliderroutes.js");
+const imageSliderRoutes = require("./routes/imageSliderRoutes");
 const adminRoutes = require("./routes/adminRoutes");
 const adminAuthRoutes = require("./routes/adminAuthRoutes");
 
 const app = express();
 
 // Middleware
-app.use(cors({ origin: "http://localhost:5173" })); // allow frontend
+app.use(cors({ origin: "http://72.61.71.113" }));
+ // allow frontend
 app.use(express.json());
 
 // Serve uploaded PDFs
